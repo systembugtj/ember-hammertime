@@ -74,7 +74,7 @@ export default Mixin.create({
           } else {
             let end = binding.length - 6;
 
-            if (end > 0 && ':style' === binding.substring(end)) {
+            if ("touchActionStyle:style" !== binding && end > 0 && ':style' === binding.substring(end)) {
               this.otherStyleKey = binding.substring(0, end);
             }
           }
