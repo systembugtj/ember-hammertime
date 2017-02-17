@@ -85,7 +85,12 @@ export default Mixin.create({
       newAttributeBindings.push('touchActionStyle:style');
       this.set('attributeBindings', newAttributeBindings);
 
-      let desc = this.otherStyleKey ? computed(this.otherStyleKey, touchActionStyle) : computed(touchActionStyle);
+      let block = {
+        get() {
+          return touchActionStyle.apply(this);
+        }
+      };
+      let desc = this.otherStyleKey ? computed(this.otherStyleKey, block) : computed(block);
       defineProperty(this, 'touchActionStyle', desc);
     }
   },
